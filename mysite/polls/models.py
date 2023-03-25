@@ -10,8 +10,10 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
     
+    # only return True if the date is also in the past
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 # Each Choice is associated with a Question
 class Choice(models.Model):

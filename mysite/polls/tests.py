@@ -6,6 +6,16 @@ from django.utils import timezone
 from .models import Question
 
 # Create your tests here.
+
+# manage.py test polls looked for tests in the polls application
+# it found a subclass of the django.test.TestCase class
+# it created a special database for the purpose of testing
+# it looked for test methods - ones whose names begin with test
+# in test_was_published_recently_with_future_question it created a Question 
+# instance whose pub_date field is 30 days in the future
+# … and using the assertIs() method, it discovered that its was_published_recently()
+# returns True, though we wanted it to return False
+
 class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_future_question(self):
