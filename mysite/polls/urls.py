@@ -3,7 +3,7 @@
 from django.urls import path
 
 from . import views
-
+# error with polls template
 app_name = 'polls'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
